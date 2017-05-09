@@ -10,17 +10,13 @@ from django.contrib.auth import authenticate, login, logout as _logout
 
 class IndexForm(View):
 	def get(self, request, *args, **kwargs):
-		questions = Question.objects.order_by('score')
-		solveQuestions = request.user.question.all()
-		return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
+		return render(request, 'userAccount/index.html')
 	
 	def post(self, request, *args, **kwargs):
-		questions = Question.objects.order_by('score')
-		solveQuestions = request.user.question.all()
-		return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
+		return render(request, 'userAccount/index.html')
 
 class Start(TemplateView):
-	template_name='userAccount/index.html'
+	template_name='userAccount/start.html'
 
 class SignForm(View):
 	def get(self, request, *args, **kwargs):

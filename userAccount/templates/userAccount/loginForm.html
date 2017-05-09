@@ -7,10 +7,13 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static "universe.css" %}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static "universe.js" %}"></script>
 
-	<title>H@ck Wargame</title>
+	<title>MeisterCUP</title>
 </head>
-<body style="background-color: #BDC3C7 !important">
+<body style="background-color: #0f0f0f">
 </br>
 </br>
 </br>
@@ -18,14 +21,18 @@
 </br>
 </br>
 	<div class="row" >
+        <div class="stage">
+            <div class="outer-ring">
+            </div>
+        </div>
 		<div class="login" >
 			<div class="col-xs-4 col-md-4 col-sm-4">
 			</div>
 			<div class="col-xs-4 col-md-4 col-sm-4">
 
-			    <div class="login-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white" >		
+			    <div class="login-form" style="height: auto; width: 100%; border: 5px solid white ;border-radius: 15px; padding: 25px; background-color: #0f0f0f" >
 						<center style="font-family: Baloo;">{{ error }}</center>
-			    		<center><h1><a href='{% url 'user:indexForm' %}'" style="color: orange">H@ck Wargame</a></h1></center>
+			    		<center><h1><a href='{% url 'user:indexForm' %}' style="color: white">MeisterCUP</a></h1></center>
 			     	<form name="login" action={% url 'user:loginForm' %} method="POST">{% csrf_token %}
 				        <div class="form-group">
 				            <input type="text" class="form-control login-field" value="" placeholder="Enter your Id" name="user_id" />
@@ -33,7 +40,7 @@
 					    <div class="form-group">
 					          <input type="password" class="form-control login-field" value="" placeholder="Password" name="user_pw"  />
 					     </div>
-				        <button type="submit" class="btn btn-warning btn-lg btn-block" style="margin-top: 40px; ">Log in</button>
+				        <button type="submit" class="btn btn-default btn-lg btn-block" style="margin-top: 40px; ">Login</button>
 				    </form>
 			    </div>
 			</div>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Javascript Slide Example</title>
     <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
-    <script src="liquidFillGauge.js" language="JavaScript"></script>
+    <script src="{% static "liquidFillGauge.js" %}" language="JavaScript"></script>
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="countdown.css">
+    <link rel="stylesheet" type="text/css" href="{% static "countdown.css" %}">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="TimeCircles.js"></script>
-    <link href="TimeCircles.css" rel="stylesheet">
-    <script src="countdown.js"></script>
+    <script type="text/javascript" src="{% static "TimeCircles.js" %}"></script>
+    <link href="{% static "TimeCircles.css" %}" rel="stylesheet">
+    <script src="{% static "countdown.js" %}"></script>
+  <script src="{% static "stickgraph.js" %}" language="JavaScript"></script>
 
 <style type='text/css'>
-	body {
-		margin-top: 10%;
-	}
 	#slidebox {
 		position:relative;
 		width:100%;
@@ -136,6 +135,5 @@
 		setInterval(changeSlide,3000);
 	</script>
 
-  <script src="stickgraph.js" language="JavaScript"></script>
 </body>
 </html>
