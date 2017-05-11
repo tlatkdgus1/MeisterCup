@@ -1,11 +1,28 @@
 {% load staticfiles %}
 <html>
 <head>
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "universe.css" %}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static "universe.js" %}"></script>
 	<title>MeisterCup</title>
 </head>
-<body style="background-color: #0f0f0f">
+<body style="background-color: #0f0f0f!important;">
+<center><h1 style="color: white; font-family: 'Anton', sans-serif; font-size: 60px">MeisterCUP</h1></center>
+<div class="stage">
+    <div class="outer-ring">
 
+</div>
+{% if user.is_authenticated %}
+    {% include 'userAccount/question.html' %}
+{% else %}
+    <div class="inner-ring"></div>
+    <a href='{% url 'user:loginForm' %}' class="btn btn-default btn-lg"> Sign In </a>
+    <a href='{% url 'user:signForm' %}' class="btn btn-default btn-lg">Sign Up</a>
+{% endif %}
+</div>
 
 </body>
 </html>

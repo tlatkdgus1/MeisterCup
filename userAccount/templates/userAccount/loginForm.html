@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static "universe.css" %}">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{% static "universe.js" %}"></script>
@@ -32,7 +32,7 @@
 
 			    <div class="login-form" style="height: auto; width: 100%; border: 5px solid white ;border-radius: 15px; padding: 25px; background-color: #0f0f0f" >
 						<center style="font-family: Baloo;">{{ error }}</center>
-			    		<center><h1><a href='{% url 'user:indexForm' %}' style="color: white">MeisterCUP</a></h1></center>
+			    		<center><h1><a href='{% url 'user:indexForm' %}' style="color: white;font-family: 'Anton', sans-serif;">MeisterCUP</a></h1></center>
 			     	<form name="login" action={% url 'user:loginForm' %} method="POST">{% csrf_token %}
 				        <div class="form-group">
 				            <input type="text" class="form-control login-field" value="" placeholder="Enter your Id" name="user_id" />
