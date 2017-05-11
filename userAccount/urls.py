@@ -13,6 +13,7 @@ urlpatterns =[
 	url(r'^index/$', views.IndexForm.as_view(), name='indexForm'),
 	url(r'^ranking/$', views.RankingForm.as_view(), name='rankingForm'),
 	url(r'^start/$', views.Start.as_view(), name='start'),
+	url(r'^question/$', views.QuestionForm.as_view(), name='question')
 	
 ]
 

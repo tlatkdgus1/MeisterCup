@@ -3,8 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
 
+</head>
+<br>
+{% for question in questions %}
+    {% if question in solveQuestions %}
+        <div class="col-xs-4 col-md-4 col-sm-4" style="float: left">
+		   	<div class="question-form" style="height: 45%; width: 100%; border: 5px solid green ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
+		   		<h1 style="float: left; color: black;font-family: 'Bree Serif', serif;">{{ question.title }}</h1> <h3 style="padding-left: 10px; font-family: 'Baloo';font-size: 13px; color: black;font-family: 'Bree Serif', serif;">  {{ question.score }}pt</h3>
+		   		</br></br>
+			   		<div style="color: black"> {{question.text}}</div>
+                </br><div style="color: black">URL :
+		   		{% if question.url != "" %}
+		       		<a href="{{question.url}}">{{question.url}}</a></div>
+                {% else %}
+                    </div>
+		   		{% endif %}
+                <div style="color: black">FILE :
+		   		{% if question.file.url != "" %}
+			   		<a href="{{question.file.url}}">Download</a></div>
+                {% else %}
+                    </div>
+		   		{% endif %}
+                </br>
+                <form name="flag" action={% url 'user:checkFlag' %} method="POST">{% csrf_token %}
+			   		<input type="text" class="form-control flag-field" value="" placeholder="Enter the Flag" name="flag" />
+			   	</form>
+		   	</div>
+        </div>
+    {% else %}
+        <div class="col-xs-4 col-md-4 col-sm-4" style="float: left">
+		   	<div class="question-form" style="height: 45%; width: 100%; border: 5px solid white ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
+		   		<h1 style="float: left; color: black;font-family: 'Bree Serif', serif;">{{ question.title }}</h1> <h3 style="padding-left: 10px; font-family: 'Baloo';font-size: 13px; color: black;font-family: 'Bree Serif', serif;">  {{ question.score }}pt</h3>
+		   		</br></br>
+			   		<div style="color: black"> {{question.text}}</div>
+                </br><div style="color: black">URL :
+		   		{% if question.url != "" %}
+		       		<a href="{{question.url}}">{{question.url}}</a></div>
+                {% else %}
+                    </div>
+		   		{% endif %}
+                <div style="color: black">FILE :
+		   		{% if question.file.url != "" %}
+			   		<a href="{{question.file.url}}">Download</a></div>
+                {% else %}
+                    </div>
+		   		{% endif %}
+                </br>
+                <form name="flag" action={% url 'user:checkFlag' %} method="POST">{% csrf_token %}
+			   		<input type="text" class="form-control flag-field" value="" placeholder="Enter the Flag" name="flag" />
+			   	</form>
+		   	</div>
+        </div>
+    {% endif %}
+{% endfor %}
 </body>
 </html>

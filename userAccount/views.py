@@ -7,10 +7,26 @@ from .models import MyUser
 from .models import Question
 from django.contrib.auth import authenticate, login, logout as _logout
 
+class QuestionForm(View):
+	def get(self, request, *args, **kwargs):
+		questions = Question.objects.order_by('score')
+
+		return render(request, 'userAccount/question.html', {'questions': questions})
+
+	def post(self, request, *args, **kwargs):
+		return render(request, 'userAccount/question.html')
 
 class IndexForm(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'userAccount/index.html')
+
+		if request.user.is_anonymous():
+			return render(request, 'userAccount/index.html')
+
+		questions = Question.objects.order_by('score')
+		solveQuestions = request.user.question.all()
+		return render(request, 'userAccount/index.html', {'questions':questions, 'solveQuestions':solveQuestions})
+
+
 	
 	def post(self, request, *args, **kwargs):
 		return render(request, 'userAccount/index.html')
@@ -59,7 +75,6 @@ class LoginForm(View):
 
 def logout(request):
 	_logout(request)
-	questions = Question.objects.order_by('score')
 	return render(request, 'userAccount/index.html')
 
 def checkFlag(request):
