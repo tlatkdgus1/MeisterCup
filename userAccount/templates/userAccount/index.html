@@ -22,7 +22,8 @@
         </div>
 {% if user.is_authenticated %}
     </div>
-    <a href='{% url 'user:logout' %}' class="btn btn-default btn-lg" style="margin-left: 45%;position:absolute; bottom:20px"> Logout </a>
+    <a href='{% url 'user:logout' %}' class="btn btn-default btn-lg" style="margin-left: 40%;position:absolute; bottom:20px"> Logout </a>
+    <a href='{% url 'user:rankingForm' %}' class="btn btn-default btn-lg" style="margin-left: 50%;position:absolute; bottom:20px"> Ranking </a>
     {% include 'userAccount/question.html' %}
 
 {% else %}

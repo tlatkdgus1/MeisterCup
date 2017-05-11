@@ -4,43 +4,63 @@
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<title>H@ck Wargame</title>
 </head>
-<body style="background-color: orange">
+<body style="background-color: black">
 <div class="col-xs-4 col-md-4 col-sm-4">
 </div>
 <div class="col-xs-4 col-md-4 col-sm-4">
 	<br>
 	<br>
-	<center><h1 style="font-family: 'Baloo';font-size: 50px;"><a href='{% url 'user:indexForm' %}'">Scoreboard</a></h1></center>
+	<center><h1><a href='{% url 'user:indexForm' %}' style="font-family: 'Anton', sans-serif; font-size: 60px; color: white">Scoreboard</a></h1></center>
 	
 	<div class="question-form" style="height: auto; width: 100%; border: 5px solid white ;border-radius: 30px; padding: 25px; background-color: white; margin-top: 10px" >
 		{% for user in users %}
-		</br>
 		{% if forloop.counter == 1 %}
-		<h1 style="float: left; font-size: 50px">{{ forloop.counter }}.&nbsp</h1> 
-		<h1 style="color: black; float: left;font-size: 50px;">{{ user.username }}</h1>
-		<h3 style="padding-left: 20px; font-family: 'Baloo';font-size: 10px; ">{{ user.score }}pt</h3>&nbsp;&nbsp;&nbsp;
-		<img src="{% static 'medal/gold.jpg' %}" style="width: 80px">
+
+            {% if request.user.username == user.username %}
+                <h1 style="color: red; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: red; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% else %}
+                <h1 style="color: black; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: black; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% endif %}
+		<h3 style="padding-left: 20px; font-size: 10px;font-family: 'Bree Serif', serif; ">{{ user.score }}pt</h3>&nbsp;&nbsp;&nbsp;
+		<img src="{% static 'medal/gold.jpg' %}" style="width: 70px">
 		{% elif forloop.counter == 2 %}
-		<h1 style="float: left; font-size: 40px">{{ forloop.counter }}.&nbsp</h1> 
-		<h1 style="color: black; float: left;font-size: 40px;">{{ user.username }}</h1>
-		<h3 style="padding-left: 20px; font-family: 'Baloo';font-size: 10px; ">{{ user.score }}pt</h3>&nbsp;&nbsp;&nbsp;
+            {% if request.user.username == user.username %}
+                <h1 style="color: red; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: red; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% else %}
+                <h1 style="color: black; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: black; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% endif %}
+            <h3 style="padding-left: 20px; font-family: 'Bree Serif', serif;font-size: 10px; ">{{ user.score }}pt</h3>&nbsp;&nbsp;&nbsp;
 		<img src="{% static 'medal/silver.jpg' %}" style="width: 50px">
 		{% elif forloop.counter == 3 %}
-		<h1 style="float: left; font-size: 30px">{{ forloop.counter }}.&nbsp</h1> 
-		<h1 style="color: black; float: left;font-size: 30px;">{{ user.username }}</h1>
-		<h3 style="padding-left: 20px; font-family: 'Baloo';font-size: 10px; ">{{ user.score }}pt</h3>&nbsp;&nbsp;&nbsp;
+            {% if request.user.username == user.username %}
+                <h1 style="color: red; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: red; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% else %}
+                <h1 style="color: black; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: black; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% endif %}
+            <h3 style="padding-left: 20px;font-family: 'Bree Serif', serif;font-size: 10px; ">{{ user.score }}pt</h3>&nbsp;&nbsp;&nbsp;
 		<img src="{% static 'medal/bronze.jpg' %}" style="width: 50px">
 		{% else %}
-		<h1 style="float: left; font-size: 20px">{{ forloop.counter }}.&nbsp;</h1> 
-		<h1 style="color: black; float: left;font-size: 20px;">{{ user.username }}</h1>
-		<h3 style="padding-left: 20px; font-family: 'Baloo';font-size: 10px; ">{{ user.score }}pt</h3>
+		    {% if request.user.username == user.username %}
+                <h1 style="color: red; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: red; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% else %}
+                <h1 style="color: black; float: left; font-size: 20px;font-family: 'Bree Serif', serif;">{{ forloop.counter }}.&nbsp</h1>
+                <h1 style="color: black; float: left;font-size: 20px;font-family: 'Bree Serif', serif;">{{ user.username }}</h1>
+            {% endif %}
+		<h3 style="padding-left: 20px; font-family: 'Bree Serif', serif;font-size: 10px; ">{{ user.score }}pt</h3>
 		{% endif %}
-		</br>
-		</br>
+            </br>
 		<hr style="margin-top: 20px; border: solid 1px black;">
 		{% endfor %}
 	</div>
