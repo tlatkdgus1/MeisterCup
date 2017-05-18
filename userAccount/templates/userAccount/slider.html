@@ -56,83 +56,21 @@
 			<li class="silder_element">
 				<svg id="fillgauge1" width="100%" height="100%" onclick="gauge1.update(50);"></svg>
 			</li>
-	      <li class="silder_element">
-	        <svg id="stickgraph" width="100%" height="100%" style="margin-left: 150px"></svg>
-	      </li>
-
-        <li class="silder_element">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-10 col-md-offset-1 grwb">
-                <!-- The Clock -->
-                <div class="countdown-clock" data-date="2017-03-07 00:00:00"></div>
-              </div>
-            </div>
-          </div>
-        </li>
 
 		</ul>
 	</div>
 
 	<script language="javascript">
-			var gauge1 = loadLiquidFillGauge("fillgauge1", 55);
 	    var config1 = liquidFillGaugeDefaultSettings();
-	    config1.circleColor = "#FF7777";
-	    config1.textColor = "#FF4444";
-	    config1.waveTextColor = "#FFAAAA";
-	    config1.waveColor = "#FFDDDD";
+	    config1.circleColor = "#2a3235";
+	    config1.textColor = "#2a3235";
+	    config1.waveTextColor = "#FFFFFF";
+	    config1.waveColor = "#2a3235";
 	    config1.circleThickness = 0.2;
 	    config1.textVertPosition = 0.2;
 	    config1.waveAnimateTime = 3000;
+      var gauge1 = loadLiquidFillGauge("fillgauge1", 70, config1);
 
-	</script>
-
-	<script type='text/javascript'>
-		var x = 1500;
-		var slider = document.getElementById("slider");
-		var slideArray = slider.getElementsByClassName("silder_element");
-		var slideMax = slideArray.length - 1;
-		var curSlideNo = 0;
-
-		for (i = 0; i <= slideMax; i++) {
-			if (i == curSlideNo) slideArray[i].style.left = 0;
-			else slideArray[i].style.left = -x + "px";
-		}
-
-		slider.addEventListener('click', function () {
-			changeSlide();
-		}, false);
-
-		var aniStart = false;
-		var next = 1;
-		var changeSlide = function(){
-			if (aniStart === true) return;
-			next = curSlideNo + 1;
-			if (next > slideMax) next = 0;
-			aniStart = true;
-			sliding();
-		}
-
-		function sliding() {
-			var curX = parseInt(slideArray[curSlideNo].style.left, 10);
-			var nextX = parseInt(slideArray[next].style.left, 10);
-			var newCurX = curX + 10;
-			var newNextX = nextX + 10;
-			if (newCurX >= x) {
-				slideArray[curSlideNo].style.left = -x + "px";
-				slideArray[next].style.left = 0;
-				curSlideNo = curSlideNo + 1;
-				if (curSlideNo > slideMax) curSlideNo = 0;
-				aniStart = false;
-				return;
-			}
-			slideArray[curSlideNo].style.left = newCurX + "px";
-			slideArray[next].style.left = newNextX + "px";
-			setTimeout(function () {
-				sliding();
-			}, 20);
-		}
-		setInterval(changeSlide,3000);
 	</script>
 
 </body>
